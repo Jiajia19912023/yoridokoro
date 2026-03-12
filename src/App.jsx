@@ -1033,10 +1033,9 @@ function Radar({ result, size=250 }) {
         <path d={poly} fill="rgba(80,220,110,0.11)"/>
         <path d={poly} fill="none" stroke="rgba(90,230,120,0.78)" strokeWidth="2.5"/>
         {dpts.map((p,i)=>(<g key={i}><circle cx={p.x.toFixed(1)} cy={p.y.toFixed(1)} r="9" fill={axes[i].c} opacity="0.18"/><circle cx={p.x.toFixed(1)} cy={p.y.toFixed(1)} r="5" fill={axes[i].c} stroke="rgba(255,255,255,0.6)" strokeWidth="1.5"/></g>))}
-        {lpts.map((p,i)=>(<g key={i}><text x={p.x.toFixed(1)} y={(p.y-7).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="10" fill={p.c} fontWeight="700">{p.label}</text><text x={p.x.toFixed(1)} y={(p.y+8).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="11" fill="rgba(255,255,255,0.85)" fontWeight="600">{p.val}%</text></g>))}
+        {lpts.map((p,i)=>(<g key={i}><text x={p.x.toFixed(1)} y={(p.y-7).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="10" fill={p.c} fontWeight="700">{p.label}</text><text x={p.x.toFixed(1)} y={(p.y+8).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="11" fill="rgba(255,255,255,0.85)" fontWeight="600">{p.val}%</text>{i===1&&<text x={p.x.toFixed(1)} y={(p.y+22).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="8" fill={p.c} opacity="0.75">（回避と不安のミックス）</text>}</g>))}
         <text x={cx} y={cy-5} textAnchor="middle" fontSize="15" fontWeight="800" fill={ti.color}>{ti.label}</text>
       </svg>
-      {ti.short==="disorganized"&&<div style={{fontSize:10,color:ti.color,opacity:0.8,marginTop:4}}>（回避と不安のミックス）</div>}
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"5px 12px",marginTop:4}}>
         {axes.map(a=>(<div key={a.label} style={{display:"flex",alignItems:"center",gap:3}}><div style={{width:6,height:6,borderRadius:"50%",background:a.c}}/><span style={{fontSize:9,color:"rgba(255,255,255,0.48)"}}>{a.label}</span></div>))}
       </div>
