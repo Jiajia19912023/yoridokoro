@@ -1008,7 +1008,7 @@ function getTypeInfo(r, t) {
 // ── Radar ─────────────────────────────────────────────────────────────────────
 function Radar({ result, size=250 }) {
   const t = useContext(LangCtx);
-  const cx=size/2,cy=size/2,R=86,N=4,off=-Math.PI/2;
+  const cx=size/2,cy=size/2,R=74,N=4,off=-Math.PI/2;
   const stable=Math.max(5,100-Math.max(result.anxious,result.avoidant));
   const disorg=Math.round((result.anxious+result.avoidant)/2);
   const ax = t?.attAxisLabels || T.ja.attAxisLabels;
@@ -1021,7 +1021,8 @@ function Radar({ result, size=250 }) {
   const pt=(i,r)=>({x:cx+r*Math.cos(i*2*Math.PI/N+off),y:cy+r*Math.sin(i*2*Math.PI/N+off)});
   const dpts=axes.map((a,i)=>pt(i,(a.val/100)*R));
   const poly=dpts.map((p,i)=>(i===0?"M":"L")+p.x.toFixed(1)+","+p.y.toFixed(1)).join(" ")+" Z";
-  const lpts=axes.map((a,i)=>{const rr=R+28,ang=i*2*Math.PI/N+off;return{x:cx+rr*Math.cos(ang),y:cy+rr*Math.sin(ang),...a};});
+  // top/bottom get R+26 offset, left/right get R+42 to avoid overlap
+  const lpts=axes.map((a,i)=>{const rr=(i===1||i===3)?R+42:R+26;const ang=i*2*Math.PI/N+off;return{x:cx+rr*Math.cos(ang),y:cy+rr*Math.sin(ang),...a};});
   const ti=getTypeInfo(result,t);
   return (
     <div style={{textAlign:"center"}}>
@@ -1033,9 +1034,9 @@ function Radar({ result, size=250 }) {
         <path d={poly} fill="none" stroke="rgba(90,230,120,0.78)" strokeWidth="2.5"/>
         {dpts.map((p,i)=>(<g key={i}><circle cx={p.x.toFixed(1)} cy={p.y.toFixed(1)} r="9" fill={axes[i].c} opacity="0.18"/><circle cx={p.x.toFixed(1)} cy={p.y.toFixed(1)} r="5" fill={axes[i].c} stroke="rgba(255,255,255,0.6)" strokeWidth="1.5"/></g>))}
         {lpts.map((p,i)=>(<g key={i}><text x={p.x.toFixed(1)} y={(p.y-7).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="10" fill={p.c} fontWeight="700">{p.label}</text><text x={p.x.toFixed(1)} y={(p.y+8).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="11" fill="rgba(255,255,255,0.85)" fontWeight="600">{p.val}%</text></g>))}
-        <text x={cx} y={ti.short==="disorganized"?cy-11:cy-5} textAnchor="middle" fontSize="15" fontWeight="800" fill={ti.color}>{ti.label}</text>
-        {ti.short==="disorganized"&&<text x={cx} y={cy+8} textAnchor="middle" fontSize="8" fill={ti.color} opacity="0.8">（回避と不安のミックス）</text>}
+        <text x={cx} y={cy-5} textAnchor="middle" fontSize="15" fontWeight="800" fill={ti.color}>{ti.label}</text>
       </svg>
+      {ti.short==="disorganized"&&<div style={{fontSize:10,color:ti.color,opacity:0.8,marginTop:4}}>（回避と不安のミックス）</div>}
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"5px 12px",marginTop:4}}>
         {axes.map(a=>(<div key={a.label} style={{display:"flex",alignItems:"center",gap:3}}><div style={{width:6,height:6,borderRadius:"50%",background:a.c}}/><span style={{fontSize:9,color:"rgba(255,255,255,0.48)"}}>{a.label}</span></div>))}
       </div>
