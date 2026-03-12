@@ -69,6 +69,7 @@ const T = {
       avoidant:{label:"回避型",color:"#70b8f0",desc:"親密になることへの不安から、距離を取りやすいタイプ。感情を抑制して一人の安全を守ろうとします。",tips:["感情に名前をつける練習","小さな自己開示から始める","安全な関係の場を作る"]},
       mixed:{label:"混合型",color:"#e8c060",desc:"近づきたいけど傷つきたくない、という葛藤を抱えやすいタイプ。状況によって反応が変わります。",tips:["自分のパターンをノートで観察する","安全な関係の経験を積む","信頼できるサポーターを見つける"]},
       secure:{label:"安定型",color:"#60cc80",desc:"比較的バランスの取れた愛着スタイル。関係の中で安心感を持ちやすく、適度な距離感を保てます。",tips:["このバランスを意識して維持する","パートナーの愛着ニーズを理解する","定期的な自己チェックを続ける"]},
+      disorganized:{label:"無秩序型",color:"#d080e0",desc:"不安と回避の両方が高く、関係の中で混乱しやすいタイプ。近づきたいが怖いという矛盾した気持ちを抱えます。",tips:["感情パターンを記録して自己理解を深める","信頼できる安全な関係から少しずつ経験を積む","専門家のサポートも選択肢として活用する"]},
     },
     attAxisLabels:["不安傾向","安定性","回避傾向","自立","信頼"],
     attAnxious:"不安", attAvoidant:"回避",
@@ -86,7 +87,7 @@ const T = {
     emDelaySub:"次は３分間、スマホも何もかも置いて\n何もしない時間を作ろう。",
     emDelayHint:"このまま画面を伏せて、\nただ呼吸するだけでいい。",
     emTimerBtn:"タイマーを始める →",
-    emTimerLabel:"衝動遅延", emTimerTitle:"３分間、ただ置いておく",
+    emTimerLabel:"衝動遅延", emTimerTitle:"３分間、ただ何もしない時間",
     emTimerQ:"いま、その行動を\"今すぐ\"やりたい？",
     emEndLabel:"終了スキャン", emEndTitle:"今の状態を確認",
     emMemoPlaceholder:"一言メモ（任意）",
@@ -95,7 +96,10 @@ const T = {
     reModeLabel:"今の反応モード", reModeTitle:"今はどっちに近い？",
     reExpLabel:"曝露 3分", reExpTitle:"感情とそのまま向き合う",
     reExpHint:"逃げずに、ただ感じている。\n判断しない。解決しない。ただ観察する。",
+    reExpInfoHint:"スマホを置いて\nただ感情とともにいる時間です。",
+    reExpTimerTitle:"３分間、ただ何もしない時間",
     reWriteLabel:"筆記開示", reWriteTitle:"紙に書く時間",
+    reWritePurpose:"感情を言葉にして書き出すことで、心の整理と距離感が生まれます。",
     reWriteInstruction:"📝 紙とペンを用意してください",
     reWriteTips:"· 15分、止まらずに書く\n· 文章の上手さは不要",
     metaLabel:"メタ認知",
@@ -161,6 +165,7 @@ const T = {
       avoidant:{label:"Avoidant",color:"#70b8f0",desc:"You tend to create distance when intimacy grows. You protect yourself by suppressing emotions.",tips:["Practice naming your emotions","Start with small self-disclosures","Create safe spaces for connection"]},
       mixed:{label:"Mixed",color:"#e8c060",desc:"You want closeness but fear being hurt. Your reactions can shift depending on the situation.",tips:["Journal your patterns","Seek out safe relationship experiences","Find a trusted support person"]},
       secure:{label:"Secure",color:"#60cc80",desc:"You have a relatively balanced attachment style. You can feel secure in relationships and maintain healthy distance.",tips:["Keep nurturing this balance","Learn your partner's attachment needs","Check in with yourself regularly"]},
+      disorganized:{label:"Disorganized",color:"#d080e0",desc:"You show high levels of both anxiety and avoidance. You may feel conflicted — wanting closeness but also fearing it.",tips:["Track your emotional patterns to build self-awareness","Gradually build trust in safe relationships","Consider professional support as an option"]},
     },
     attAxisLabels:["Anxious","Secure","Avoidant","Independent","Trust"],
     attAnxious:"Anxious", attAvoidant:"Avoidant",
@@ -253,6 +258,7 @@ const T = {
       avoidant:{label:"回避型",color:"#70b8f0",desc:"当关系变亲密时倾向于保持距离，通过抑制情绪保护自己。",tips:["练习给情绪命名","从小小的自我开放开始","创造安全的连接空间"]},
       mixed:{label:"混合型",color:"#e8c060",desc:"渴望亲密又害怕受伤，反应可能因情况而变。",tips:["用笔记观察自己的模式","积累安全关系的经验","找到可信赖的支持者"]},
       secure:{label:"安全型",color:"#60cc80",desc:"依恋风格相对平衡，能在关系中感到安心，保持适当距离。",tips:["有意识地维持这种平衡","了解伴侣的依恋需求","定期进行自我检视"]},
+      disorganized:{label:"混乱型",color:"#d080e0",desc:"不安与回避都很强烈，容易在关系中感到混乱。既想亲近又害怕受伤。",tips:["记录情绪模式，加深自我理解","在安全关系中慢慢积累信任经验","也可以考虑寻求专业支持"]},
     },
     attAxisLabels:["焦虑倾向","稳定性","回避倾向","独立性","信任"],
     attAnxious:"焦虑", attAvoidant:"回避",
@@ -345,6 +351,7 @@ const T = {
       avoidant:{label:"回避型",color:"#70b8f0",desc:"當關係變親密時傾向保持距離，通過抑制情緒保護自己。",tips:["練習為情緒命名","由小小嘅自我開放開始","創造安全嘅連接空間"]},
       mixed:{label:"混合型",color:"#e8c060",desc:"渴望親密又怕受傷，反應可能因情況而變。",tips:["用筆記觀察自己嘅模式","積累安全關係嘅經驗","搵到可信賴嘅支持者"]},
       secure:{label:"安全型",color:"#60cc80",desc:"依附風格相對平衡，能喺關係中感到安心，保持適當距離。",tips:["有意識咁維持呢種平衡","了解伴侶嘅依附需求","定期進行自我檢視"]},
+      disorganized:{label:"混亂型",color:"#d080e0",desc:"不安同回避都好強烈，容易喺關係中感到混亂。想親近但又驚受傷。",tips:["記錄情緒模式，加深自我了解","喺安全關係中慢慢積累信任經驗","亦可考慮尋求專業支援"]},
     },
     attAxisLabels:["焦慮傾向","穩定性","回避傾向","獨立性","信任"],
     attAnxious:"焦慮", attAvoidant:"回避",
@@ -437,6 +444,7 @@ const T = {
       avoidant:{label:"회피형",color:"#70b8f0",desc:"친밀함이 커지면 거리를 두려는 경향이 있어요. 감정을 억제해서 혼자만의 안전을 지키려 해요.",tips:["감정에 이름 붙이는 연습","작은 자기 개방부터 시작하기","안전한 관계 공간 만들기"]},
       mixed:{label:"혼합형",color:"#e8c060",desc:"가까워지고 싶지만 상처받기 싫은 갈등을 안고 있어요. 상황에 따라 반응이 달라져요.",tips:["노트에 자신의 패턴을 관찰하기","안전한 관계 경험 쌓기","신뢰할 수 있는 지지자 찾기"]},
       secure:{label:"안정형",color:"#60cc80",desc:"비교적 균형 잡힌 애착 스타일이에요. 관계에서 안정감을 느끼기 쉽고, 적당한 거리를 유지할 수 있어요.",tips:["이 균형을 의식적으로 유지하기","파트너의 애착 니즈 이해하기","정기적으로 자기 점검하기"]},
+      disorganized:{label:"혼란형",color:"#d080e0",desc:"불안과 회피 모두 높은 편이에요. 가까워지고 싶지만 두렵다는 모순된 감정을 안고 있어요.",tips:["감정 패턴을 기록해 자기 이해를 깊이하기","안전한 관계에서 천천히 신뢰 쌓기","전문적인 지원을 활용하는 것도 선택지입니다"]},
     },
     attAxisLabels:["불안 경향","안정성","회피 경향","자립","신뢰"],
     attAnxious:"불안", attAvoidant:"회피",
@@ -529,6 +537,7 @@ const T = {
       avoidant:{label:"Evitativo",color:"#70b8f0",desc:"Tiendes a crear distancia cuando la intimidad crece. Te proteges suprimiendo emociones.",tips:["Practica nombrar tus emociones","Empieza con pequeñas revelaciones","Crea espacios seguros de conexión"]},
       mixed:{label:"Mixto",color:"#e8c060",desc:"Quieres cercanía pero temes salir herido/a. Tus reacciones pueden variar según la situación.",tips:["Anota tus patrones en un diario","Busca experiencias de relación segura","Encuentra un apoyo de confianza"]},
       secure:{label:"Seguro",color:"#60cc80",desc:"Tienes un estilo de apego relativamente equilibrado. Puedes sentirte seguro/a en relaciones.",tips:["Sigue cultivando este equilibrio","Aprende las necesidades de apego de tu pareja","Haz un chequeo regular"]},
+      disorganized:{label:"Desorganizado",color:"#d080e0",desc:"Muestras altos niveles de ansiedad y evitación. Puedes sentirte conflictuado/a — queriendo cercanía pero también temiéndola.",tips:["Registra tus patrones emocionales para conocerte mejor","Construye confianza gradualmente en relaciones seguras","Considera el apoyo profesional como opción"]},
     },
     attAxisLabels:["Ansioso","Seguro","Evitativo","Independiente","Confianza"],
     attAnxious:"Ansioso", attAvoidant:"Evitativo",
@@ -621,6 +630,7 @@ const T = {
       avoidant:{label:"Évitant",color:"#70b8f0",desc:"Vous tendez à créer de la distance quand l'intimité grandit. Vous vous protégez en supprimant vos émotions.",tips:["Pratiquez la nomination de vos émotions","Commencez par de petites révélations","Créez des espaces sûrs de connexion"]},
       mixed:{label:"Mixte",color:"#e8c060",desc:"Vous voulez de la proximité mais craignez d'être blessé(e). Vos réactions peuvent varier selon les situations.",tips:["Notez vos schémas dans un journal","Cherchez des expériences relationnelles sûres","Trouvez un soutien de confiance"]},
       secure:{label:"Sécure",color:"#60cc80",desc:"Vous avez un style d'attachement relativement équilibré. Vous pouvez vous sentir en sécurité dans les relations.",tips:["Continuez à cultiver cet équilibre","Apprenez les besoins d'attachement de votre partenaire","Faites un bilan régulier"]},
+      disorganized:{label:"Désorganisé",color:"#d080e0",desc:"Vous présentez de hauts niveaux d'anxiété et d'évitement. Vous pouvez vous sentir partagé(e) — désirant la proximité mais la craignant aussi.",tips:["Notez vos schémas émotionnels pour mieux vous connaître","Construisez la confiance progressivement dans des relations sûres","Envisagez un soutien professionnel"]},
     },
     attAxisLabels:["Anxieux","Sécure","Évitant","Indépendant","Confiance"],
     attAnxious:"Anxieux", attAvoidant:"Évitant",
@@ -713,6 +723,7 @@ const T = {
       avoidant:{label:"Избегающий",color:"#70b8f0",desc:"Вы склонны создавать дистанцию по мере роста близости. Вы защищаете себя, подавляя эмоции.",tips:["Практикуйте называние своих эмоций","Начните с небольшого самораскрытия","Создавайте безопасные пространства для связи"]},
       mixed:{label:"Смешанный",color:"#e8c060",desc:"Вы хотите близости, но боитесь быть ранённым/ой. Ваши реакции могут меняться в зависимости от ситуации.",tips:["Записывайте свои паттерны в дневник","Ищите опыт безопасных отношений","Найдите надёжного помощника"]},
       secure:{label:"Надёжный",color:"#60cc80",desc:"У вас относительно сбалансированный стиль привязанности. Вы можете чувствовать себя в безопасности в отношениях.",tips:["Продолжайте развивать этот баланс","Изучите потребности привязанности партнёра","Регулярно проверяйте себя"]},
+      disorganized:{label:"Дезорганизованный",color:"#d080e0",desc:"У вас высокий уровень как тревожности, так и избегания. Вы можете чувствовать внутренний конфликт — желать близости, но бояться её.",tips:["Отслеживайте эмоциональные паттерны для самопознания","Постепенно выстраивайте доверие в безопасных отношениях","Рассмотрите профессиональную поддержку как вариант"]},
     },
     attAxisLabels:["Тревожность","Надёжность","Избегание","Независимость","Доверие"],
     attAnxious:"Тревожность", attAvoidant:"Избегание",
@@ -988,9 +999,9 @@ const AMODE_ICONS = {anxious:"worried", avoidant:"waves", stable:"neutral"};
 function getTypeInfo(r, t) {
   const a=r.anxious, v=r.avoidant;
   const types = t?.attTypes || T.ja.attTypes;
-  if(a>65) return {label:types.anxious.label, color:types.anxious.color, short:"anxious"};
-  if(v>65) return {label:types.avoidant.label, color:types.avoidant.color, short:"avoidant"};
-  if(a>45||v>45) return {label:types.mixed.label, color:types.mixed.color, short:"mixed"};
+  if(a>50 && v>50) return {label:types.disorganized?.label||T.ja.attTypes.disorganized.label, color:types.disorganized?.color||"#d080e0", short:"disorganized"};
+  if(a>50) return {label:types.anxious.label, color:types.anxious.color, short:"anxious"};
+  if(v>50) return {label:types.avoidant.label, color:types.avoidant.color, short:"avoidant"};
   return {label:types.secure.label, color:types.secure.color, short:"secure"};
 }
 
@@ -1173,8 +1184,6 @@ function DraftCard({ draft, onResume, onDiscard, modeColor, icon, modeLabel }) {
 // ── Home Screen ───────────────────────────────────────────────────────────────
 function HomeScreen({ onStart, onResume, onDiscard, sessions, draftEm, draftRe, attResult }) {
   const t = useContext(LangCtx);
-  const last=sessions[sessions.length-1];
-  const ti=attResult?getTypeInfo(attResult,t):null;
   return (
     <div>
       <div style={{textAlign:"center",paddingTop:20,paddingBottom:22}}>
@@ -1206,26 +1215,6 @@ function HomeScreen({ onStart, onResume, onDiscard, sessions, draftEm, draftRe, 
           <div style={{fontSize:9,color:"rgba(116,196,136,0.45)",marginTop:4}}>{t?.reTime}</div>
         </div>
       </div>
-      {last&&last.after&&(
-        <Panel style={{marginBottom:11}}>
-          <div style={{fontSize:9,color:TH.muted,textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:6}}>{t?.prevSess}</div>
-          <div style={{display:"flex",gap:16}}>
-            {[[t?.scoreEmo||"感情",last.before.emotionIntensity0_10,last.after.emotionIntensity0_10],[t?.scoreUrge||"衝動",last.before.urgeIntensity0_10,last.after.urgeIntensity0_10]].map(([l,b,a])=>(
-              <div key={l} style={{fontSize:11,color:TH.sub}}>{l}: <span style={{color:"#f08070"}}>{b}</span>→<span style={{color:a<b?"#60cc80":"#f08070"}}>{a}</span></div>
-            ))}
-          </div>
-          <div style={{fontSize:9,color:TH.muted,marginTop:3}}>{new Date(last.createdAt).toLocaleDateString(t?.locale||"ja-JP",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})}</div>
-        </Panel>
-      )}
-      {ti&&(
-        <Panel style={{marginBottom:11}}>
-          <div style={{fontSize:9,color:TH.muted,textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:4}}>{t?.attLatest}</div>
-          <div style={{display:"flex",alignItems:"center",gap:8}}>
-            <div style={{padding:"3px 12px",borderRadius:11,background:ti.color+"18",border:"1.5px solid "+ti.color+"50",color:ti.color,fontSize:11,fontWeight:700}}>{ti.label}</div>
-            <div style={{fontSize:10,color:TH.muted}}>{t?.attAnxious||"不安"} {attResult.anxious}% · {t?.attAvoidant||"回避"} {attResult.avoidant}%</div>
-          </div>
-        </Panel>
-      )}
     </div>
   );
 }
@@ -1290,7 +1279,7 @@ function AttTab({ history, onNew }) {
   const t = useContext(LangCtx);
   if(history.length===0) return(
     <div>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,paddingRight:95}}>
         <span style={{fontSize:16,fontWeight:700,color:TH.text}}>{t?.attTabTitle||"愛着スタイル"}</span>
         <Btn variant="green" onClick={onNew} style={{fontSize:10,padding:"7px 13px"}}>{t?.attTabNew||"+ 診断する"}</Btn>
       </div>
@@ -1304,12 +1293,14 @@ function AttTab({ history, onNew }) {
   );
   return(
     <div>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,paddingRight:95}}>
         <span style={{fontSize:16,fontWeight:700,color:TH.text}}>{t?.attTabHistory||"愛着スタイル履歴"}</span>
         <Btn variant="green" onClick={onNew} style={{fontSize:10,padding:"7px 13px"}}>{t?.attTabRediag||"+ 再診断"}</Btn>
       </div>
       {[...history].reverse().map((h,i)=>{
         const ti=getTypeInfo(h,t);
+        const types = t?.attTypes || T.ja.attTypes;
+        const info=types[ti.short];
         return(
           <Panel key={i} style={{marginBottom:14,position:"relative"}}>
             {i===0&&<div style={{position:"absolute",top:12,right:12,padding:"2px 8px",borderRadius:7,background:"rgba(96,204,128,0.18)",border:"1px solid rgba(96,204,128,0.36)",fontSize:9,color:"#60cc80",fontWeight:700}}>{t?.attTabLatest||"最新"}</div>}
@@ -1318,13 +1309,9 @@ function AttTab({ history, onNew }) {
               <span style={{padding:"2px 9px",borderRadius:9,background:ti.color+"1a",border:"1px solid "+ti.color+"50",color:ti.color,fontSize:10,fontWeight:700}}>{ti.label}</span>
             </div>
             <div style={{display:"flex",justifyContent:"center",marginBottom:10}}><Radar result={h} size={i===0?240:200}/></div>
-            <div style={{display:"flex",borderRadius:10,overflow:"hidden",border:"1px solid "+TH.border}}>
-              {[[t?.attAnxious||"不安傾向","#f08070",h.anxious],[t?.attAvoidant||"回避傾向","#70b8f0",h.avoidant]].map(([lbl,c,val],j)=>(
-                <div key={j} style={{flex:1,textAlign:"center",padding:"10px 6px",background:j===0?"rgba(240,128,112,0.07)":"rgba(112,184,240,0.07)",borderRight:j===0?"1px solid "+TH.border:"none"}}>
-                  <div style={{fontSize:9,color:TH.muted,marginBottom:2}}>{lbl}</div>
-                  <div style={{fontSize:18,fontWeight:700,color:c}}>{val}<span style={{fontSize:10}}>%</span></div>
-                </div>
-              ))}
+            <div style={{padding:"10px 12px",background:"rgba(255,255,255,0.05)",borderRadius:10}}>
+              <div style={{fontSize:9,color:TH.muted,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:6}}>{t?.attRecommend||"おすすめの取り組み"}</div>
+              {info.tips.map((tip,j)=>(<div key={j} style={{fontSize:11,color:TH.sub,marginBottom:4,display:"flex",gap:7}}><span style={{color:ti.color}}>·</span>{tip}</div>))}
             </div>
           </Panel>
         );
@@ -1336,6 +1323,7 @@ function AttTab({ history, onNew }) {
 // ── Emergency Session ─────────────────────────────────────────────────────────
 function EmSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   const t = useContext(LangCtx);
+  useEffect(()=>{ window.scrollTo(0,0); },[]);
   const d=initialDraft||{};
   const [step,setStep]=useState(d.step??0);
   const [sc,setSc]=useState(d.sc??null);
@@ -1456,6 +1444,7 @@ function EmSess({ onDone, onHome, onSaveDraft, initialDraft }) {
 // ── Regular Session ───────────────────────────────────────────────────────────
 function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   const t = useContext(LangCtx);
+  useEffect(()=>{ window.scrollTo(0,0); },[]);
   const d=initialDraft||{};
   const [step,setStep]=useState(d.step??0);
   const [sc,setSc]=useState(d.sc??null);
@@ -1465,6 +1454,7 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   const [stress,setStress]=useState(d.stress??5);
   const [amode,setAmode]=useState(d.amode??null);
   const [exAft,setExAft]=useState(d.exAft??5);
+  const [exDone,setExDone]=useState(d.exDone??false);
   const [mq,setMq]=useState(d.mq??{q1:null,q2:null,q3:null,q4:null,q5:30,q6:null});
   const [commit,setCommit]=useState(d.commit??null);
   const [commitOther,setCommitOther]=useState(d.commitOther??"");
@@ -1474,7 +1464,7 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   const ab=(k,x)=>setAft(p=>({...p,[k]:x}));
   const qm=(k,x)=>setMq(p=>({...p,[k]:x}));
   const tog=tg=>setTt(p=>p.includes(tg)?p.filter(x=>x!==tg):[...p,tg]);
-  const snap=s=>({mode:"regular",step:s??step,sc,tt,bef,aft,stress,amode,exAft,mq,commit,commitOther,memo,situationCategory:sc,savedAt:new Date().toISOString()});
+  const snap=s=>({mode:"regular",step:s??step,sc,tt,bef,aft,stress,amode,exAft,exDone,mq,commit,commitOther,memo,situationCategory:sc,savedAt:new Date().toISOString()});
   const SB=()=><SessBar onHome={()=>{onSaveDraft(snap());onHome();}} onSaveExit={()=>{onSaveDraft(snap());onHome();}}/>;
   const cats=t?.cats||T.ja.cats;
   const catIcons=t?.catIcons||T.ja.catIcons;
@@ -1487,9 +1477,9 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   const mq6items=t?.mq6||T.ja.mq6;
   const commits=t?.commits||T.ja.commits;
   const metaQ=[
-    {title:t?.mq1Title||"頭の中で一番強い言葉は？",items:mq1items,k:"q1",prev:3,multi:false},
-    {title:t?.mq3Title||"友達が同じ状況なら何て声をかけてあげる？",items:mq3items,k:"q3",prev:4,multi:false,hasOther:true},
-    {title:t?.mq4Title||"この気持ちは何を守ってる？（複数可）",items:mq4items,k:"q4",prev:5,multi:true},
+    {title:t?.mq1Title||"頭の中で一番強い言葉は？",items:mq1items,k:"q1",prev:4,multi:false},
+    {title:t?.mq3Title||"友達が同じ状況なら何て声をかけてあげる？",items:mq3items,k:"q3",prev:5,multi:false,hasOther:true},
+    {title:t?.mq4Title||"この気持ちは何を守ってる？（複数可）",items:mq4items,k:"q4",prev:6,multi:true},
   ];
   const pages=[
     <div key="r0">
@@ -1526,26 +1516,44 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
       <SB/>
       <div style={{fontSize:9,color:ac,letterSpacing:"0.16em",textTransform:"uppercase",marginBottom:3}}>{t?.reExpLabel||"曝露 3分"}</div>
       <div style={{fontSize:18,fontWeight:700,color:TH.text,marginBottom:16}}>{t?.reExpTitle||"感情とそのまま向き合う"}</div>
-      <div style={{padding:"10px 12px",background:"rgba(255,255,255,0.05)",borderRadius:10,marginBottom:12,fontSize:11,color:TH.muted,lineHeight:1.7}}>{(t?.reExpHint||"").split("\n").map((l,i)=><span key={i}>{l}{i===0&&<br/>}</span>)}</div>
-      <TimerWidget seconds={180} onComplete={()=>{}}/>
-      <Slider label={t?.afterEmoLabel||"3分後の感情の強さ"} value={exAft} onChange={setExAft} accent={ac}/>
+      <div style={{padding:"16px",background:"rgba(70,180,90,0.08)",borderRadius:12,marginBottom:20,textAlign:"center"}}>
+        <div style={{fontSize:32,marginBottom:8}}>📵</div>
+        <div style={{fontSize:12,color:"rgba(160,232,176,0.85)",lineHeight:1.7}}>{(t?.reExpInfoHint||"スマホを置いて\nただ感情とともにいる時間です。").split("\n").map((l,i)=><span key={i}>{l}{i===0&&<br/>}</span>)}</div>
+      </div>
       <div style={{display:"flex",gap:8,marginTop:4}}>
         <Btn variant="ghost" onClick={()=>setStep(1)}>{t?.navBack||"← 戻る"}</Btn>
-        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(3)}>{t?.navNext||"次へ →"}</Btn>
+        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(3)}>{t?.emTimerBtn||"タイマーを始める →"}</Btn>
       </div>
     </div>,
     <div key="r3">
       <SB/>
+      <div style={{fontSize:9,color:ac,letterSpacing:"0.16em",textTransform:"uppercase",marginBottom:3}}>{t?.reExpLabel||"曝露 3分"}</div>
+      <div style={{fontSize:18,fontWeight:700,color:TH.text,marginBottom:16}}>{t?.reExpTimerTitle||"３分間、ただ何もしない時間"}</div>
+      <TimerWidget seconds={180} onComplete={()=>setExDone(true)}/>
+      {exDone&&(
+        <>
+          <Slider label={t?.afterEmoLabel||"3分後の感情の強さ"} value={exAft} onChange={setExAft} accent={ac}/>
+          <div style={{display:"flex",gap:8,marginTop:4}}>
+            <Btn variant="ghost" onClick={()=>setStep(2)}>{t?.navBack||"← 戻る"}</Btn>
+            <Btn variant="green" style={{flex:1}} onClick={()=>setStep(4)}>{t?.navNext||"次へ →"}</Btn>
+          </div>
+        </>
+      )}
+      {!exDone&&<Btn variant="ghost" onClick={()=>setStep(2)} style={{marginTop:12}}>{t?.navBack||"← 戻る"}</Btn>}
+    </div>,
+    <div key="r4">
+      <SB/>
       <div style={{fontSize:9,color:ac,letterSpacing:"0.16em",textTransform:"uppercase",marginBottom:3}}>{t?.reWriteLabel||"筆記開示"}</div>
-      <div style={{fontSize:18,fontWeight:700,color:TH.text,marginBottom:16}}>{t?.reWriteTitle||"紙に書く時間"}</div>
+      <div style={{fontSize:18,fontWeight:700,color:TH.text,marginBottom:8}}>{t?.reWriteTitle||"紙に書く時間"}</div>
+      <div style={{fontSize:11,color:"rgba(220,220,220,0.82)",lineHeight:1.7,marginBottom:12}}>{t?.reWritePurpose||"感情を言葉にして書き出すことで、心の整理と距離感が生まれます。"}</div>
       <div style={{padding:"12px 14px",background:"rgba(70,180,90,0.10)",borderRadius:12,marginBottom:14,lineHeight:1.8}}>
         <div style={{fontSize:12,color:ac,marginBottom:4,fontWeight:600}}>{t?.reWriteInstruction||"📝 紙とペンを用意してください"}</div>
         <div style={{fontSize:11,color:TH.muted}}>{(t?.reWriteTips||"").split("\n").map((l,i)=><div key={i}>{l}</div>)}</div>
       </div>
       <TimerWidget seconds={900} onComplete={()=>{}}/>
       <div style={{display:"flex",gap:8,marginTop:12}}>
-        <Btn variant="ghost" onClick={()=>setStep(2)}>{t?.navBack||"← 戻る"}</Btn>
-        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(4)}>{t?.navNext||"次へ →"}</Btn>
+        <Btn variant="ghost" onClick={()=>setStep(3)}>{t?.navBack||"← 戻る"}</Btn>
+        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(5)}>{t?.navNext||"次へ →"}</Btn>
       </div>
     </div>,
     ...metaQ.map(({title,items,k,prev,multi,hasOther},idx)=>(
@@ -1561,7 +1569,7 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
         {hasOther&&mq[k]===items[items.length-1]&&<input value={mq.q3other||""} onChange={e=>qm("q3other",e.target.value)} placeholder={t?.mq3OtherPh||"具体的に書く（任意）"} style={{width:"100%",background:TH.inp,border:"1px solid "+TH.border,borderRadius:8,color:TH.text,padding:"8px 11px",fontSize:12,fontFamily:"inherit",marginTop:4,boxSizing:"border-box"}}/>}
         <div style={{display:"flex",gap:8,marginTop:12}}>
           <Btn variant="ghost" onClick={()=>setStep(prev)}>{t?.navBack||"← 戻る"}</Btn>
-          <Btn variant="green" style={{flex:1}} onClick={()=>setStep(4+idx+1)} disabled={multi?(!(Array.isArray(mq[k])&&mq[k].length>0)):(!mq[k])}>{t?.navNext||"次へ →"}</Btn>
+          <Btn variant="green" style={{flex:1}} onClick={()=>setStep(5+idx+1)} disabled={multi?(!(Array.isArray(mq[k])&&mq[k].length>0)):(!mq[k])}>{t?.navNext||"次へ →"}</Btn>
         </div>
       </div>
     )),
@@ -1575,8 +1583,8 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
         <div style={{display:"flex",justifyContent:"space-between",fontSize:9,color:TH.muted,marginTop:3}}><span>{t?.mq5Lo||"ほぼない"}</span><span>{t?.mq5Mid||"半々"}</span><span>{t?.mq5Hi||"ほぼ確実"}</span></div>
       </div>
       <div style={{display:"flex",gap:8,marginTop:4}}>
-        <Btn variant="ghost" onClick={()=>setStep(6)}>{t?.navBack||"← 戻る"}</Btn>
-        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(8)}>{t?.navNext||"次へ →"}</Btn>
+        <Btn variant="ghost" onClick={()=>setStep(7)}>{t?.navBack||"← 戻る"}</Btn>
+        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(9)}>{t?.navNext||"次へ →"}</Btn>
       </div>
     </div>,
     <div key="m5">
@@ -1585,8 +1593,8 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
       <div style={{fontSize:18,fontWeight:700,color:TH.text,marginBottom:16}}>{t?.mq6Title||"別の可能性があるとしたら？（複数可）"}</div>
       {mq6items.map(a=>{const sel=Array.isArray(mq.q6)&&mq.q6.includes(a);return(<Card key={a} selected={sel} onClick={()=>qm("q6",Array.isArray(mq.q6)?(sel?mq.q6.filter(x=>x!==a):[...mq.q6,a]):[a])}><span style={{color:TH.sub,fontSize:12}}>{a}</span></Card>);})}
       <div style={{display:"flex",gap:8,marginTop:12}}>
-        <Btn variant="ghost" onClick={()=>setStep(7)}>{t?.navBack||"← 戻る"}</Btn>
-        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(9)} disabled={!(Array.isArray(mq.q6)&&mq.q6.length>0)}>{t?.navNext||"次へ →"}</Btn>
+        <Btn variant="ghost" onClick={()=>setStep(8)}>{t?.navBack||"← 戻る"}</Btn>
+        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(10)} disabled={!(Array.isArray(mq.q6)&&mq.q6.length>0)}>{t?.navNext||"次へ →"}</Btn>
       </div>
     </div>,
     <div key="c0">
@@ -1596,8 +1604,8 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
       {commits.map(a=>(<Card key={a} selected={commit===a} onClick={()=>setCommit(a)}><span style={{color:TH.sub,fontSize:12}}>{a}</span></Card>))}
       {commit===commits[commits.length-1]&&<input value={commitOther} onChange={e=>setCommitOther(e.target.value)} placeholder={t?.commitOtherPh||"具体的に書く（任意）"} style={{width:"100%",background:TH.inp,border:"1px solid "+TH.border,borderRadius:8,color:TH.text,padding:"8px 11px",fontSize:12,fontFamily:"inherit",marginTop:4,boxSizing:"border-box"}}/>}
       <div style={{display:"flex",gap:8,marginTop:12}}>
-        <Btn variant="ghost" onClick={()=>setStep(8)}>{t?.navBack||"← 戻る"}</Btn>
-        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(10)} disabled={!commit}>{t?.navNext||"次へ →"}</Btn>
+        <Btn variant="ghost" onClick={()=>setStep(9)}>{t?.navBack||"← 戻る"}</Btn>
+        <Btn variant="green" style={{flex:1}} onClick={()=>setStep(11)} disabled={!commit}>{t?.navNext||"次へ →"}</Btn>
       </div>
     </div>,
     <div key="af">
@@ -1607,7 +1615,6 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
       <Slider label={t?.emoLabel||"感情の強さ"} value={aft.e} onChange={x=>ab("e",x)} accent={ac}/>
       <Slider label={t?.urgeLabel||"衝動の強さ"} value={aft.u} onChange={x=>ab("u",x)} accent={ac}/>
       <Slider label={t?.bodyLabel||"身体の緊張"} value={aft.b} onChange={x=>ab("b",x)} accent={ac}/>
-      <Slider label={t?.thoughtLabel||"思考の確信度"} value={aft.t} onChange={x=>ab("t",x)} accent={ac}/>
       <div style={{padding:"13px",background:"rgba(60,140,75,0.08)",borderRadius:11,marginBottom:12}}>
         <div style={{fontSize:9,color:TH.muted,marginBottom:8,textTransform:"uppercase",letterSpacing:"0.08em"}}>{t?.changeLabel||"変化"}</div>
         <ScoreBar label={t?.scoreEmo||"感情"} before={bef.e} after={aft.e}/>
@@ -1616,7 +1623,7 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
       </div>
       <textarea value={memo} onChange={e=>setMemo(e.target.value)} placeholder={t?.reMemoPlaceholder||"一番の気づき（任意）"} style={{width:"100%",minHeight:52,background:TH.inp,border:"1px solid "+TH.border,borderRadius:9,color:TH.text,padding:"9px 11px",fontSize:12,fontFamily:"inherit",resize:"vertical",boxSizing:"border-box",marginBottom:12}}/>
       <div style={{display:"flex",gap:8}}>
-        <Btn variant="ghost" onClick={()=>setStep(9)}>{t?.navBack||"← 戻る"}</Btn>
+        <Btn variant="ghost" onClick={()=>setStep(10)}>{t?.navBack||"← 戻る"}</Btn>
         <Btn variant="green" style={{flex:1}} onClick={()=>onDone({
           mode:"regular",situationCategory:sc,triggerTags:tt,
           before:{emotionIntensity0_10:bef.e,urgeIntensity0_10:bef.u,bodyTension0_10:bef.b,thoughtBelievability0_10:bef.t},
@@ -1629,7 +1636,7 @@ function ReSess({ onDone, onHome, onSaveDraft, initialDraft }) {
   ];
   return(
     <Panel>
-      <div style={{display:"flex",gap:2,marginBottom:16}}>{Array.from({length:12}).map((_,i)=>(<div key={i} style={{flex:1,height:3,borderRadius:2,background:i<=step?"#a0e8b0":"rgba(255,255,255,0.08)",transition:"background 0.3s"}}/>))}</div>
+      <div style={{display:"flex",gap:2,marginBottom:16}}>{Array.from({length:13}).map((_,i)=>(<div key={i} style={{flex:1,height:3,borderRadius:2,background:i<=step?"#a0e8b0":"rgba(255,255,255,0.08)",transition:"background 0.3s"}}/>))}</div>
       {pages[Math.min(step,pages.length-1)]}
     </Panel>
   );
