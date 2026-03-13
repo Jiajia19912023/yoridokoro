@@ -1252,7 +1252,7 @@ function AttDiag({ onDone, onHome }) {
         <div style={{display:"flex",justifyContent:"center",marginBottom:14}}><Radar result={result} size={240}/></div>
         <div style={{textAlign:"center",marginBottom:14}}>
           <div style={{display:"inline-block",padding:"5px 18px",borderRadius:16,background:ti.color+"22",border:"1.5px solid "+ti.color+"66",color:ti.color,fontSize:13,fontWeight:800,marginBottom:ti.short==="disorganized"?3:7}}>{ti.label}</div>
-          {ti.short==="disorganized"&&<div style={{fontSize:10,color:ti.color,opacity:0.75,marginBottom:7}}>（回避と不安のミックス）</div>}
+          {ti.short==="disorganized"&&<div style={{fontSize:10,color:ti.color,opacity:0.75,marginBottom:7}}>{t?.attDisorgSub||"（回避と不安のミックス）"}</div>}
           <div style={{fontSize:12,color:TH.sub,lineHeight:1.75}}>{info.desc}</div>
         </div>
         <div style={{padding:"12px 14px",background:"rgba(255,255,255,0.05)",borderRadius:12,marginBottom:16}}>
@@ -1855,6 +1855,7 @@ export default function App() {
         <div style={{position:"fixed",top:12,right:14,zIndex:200}}>
           <LangSwitcher lang={lang} setLang={setLang}/>
         </div>
+        <div style={{paddingTop:42}}>
         {tab==="home"&&(
           <>
             {!attR&&(
@@ -1872,6 +1873,7 @@ export default function App() {
         {tab==="attachment" && <AttTab history={attH} onNew={()=>setSub("diag")}/>}
         {tab==="log"        && <LogScreen sessions={sess}/>}
         {tab==="memo"       && <MemoScreen memos={memo} onAdd={m=>setMemo(ms=>[...ms,m])} onEdit={m=>setMemo(ms=>ms.map(x=>x.id===m.id?m:x))}/>}
+        </div>
         <TabBar active={tab} onTab={x=>{ setSub(null); setTab(x); }}/>
       </Shell>
     </LangCtx.Provider>
